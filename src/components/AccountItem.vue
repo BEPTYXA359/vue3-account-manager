@@ -85,10 +85,12 @@
   }
 
   function handleFieldFocused (isFocused: boolean) {
-    if (isFormValid.value === null) accountForm.value?.validate()
-    if (!isFocused && isFormValid.value) {
-      emit('upsert-account', props.account?.login, { ...tempAccount }, isDraftAccount.value)
-      isDraftAccount.value = false
+    if (!isFocused) {
+      if (isFormValid.value === null) accountForm.value?.validate()
+      if (isFormValid.value) {
+        emit('upsert-account', props.account?.login, { ...tempAccount }, isDraftAccount.value)
+        isDraftAccount.value = false
+      }
     }
   }
 

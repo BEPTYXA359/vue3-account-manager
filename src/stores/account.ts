@@ -32,4 +32,5 @@ export const useAccountStore = defineStore('account', {
       }
     },
   },
+  persist: true,
 })
